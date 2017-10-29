@@ -33,15 +33,15 @@
     <button ion-button block color="primary" [disabled]="!form.form.valid" (click)="signIn()">
       Entrar
     </button>
-
+    <button ion-button block clear (click)="resetPassword()">
+      Esqueci minha senha
+    </button>
     <button ion-button block color="primary" (click)="signUp()">
      Criar Conta
     </button>
   </form>
 
-  <button ion-button block clear (click)="resetPassword()">
-    Esqueci minha senha
-  </button>
+  
 
 
 </ion-content>
