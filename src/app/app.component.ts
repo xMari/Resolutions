@@ -17,7 +17,10 @@ import { SigninPage } from './../pages/signin/signin';
 export class MyApp {
   rootPage: any;
 
-  constructor(afAuth: AngularFireAuth, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(afAuth: AngularFireAuth, 
+    platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen) {
     const authObserver = afAuth.authState.subscribe(user => {
       if (user) {
         this.rootPage = HomePage;

@@ -54,7 +54,18 @@ export class SigninPage {
   }
 
   signInWithGoogle() {
-    this.authService.signWithGoogle()
+    this.authService.signInWithGoogle()
+      .then(() => {
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch((error) => {
+        this.toastCtrl.create({ duration: 3000, position: 'bottom', message: 'Erro ao efetuar o login' })
+        .present();
+      });
+  }
+
+  signInWithFacebook() {
+    this.authService.signInWithFacebook()
       .then(() => {
         this.navCtrl.setRoot(HomePage);
       })

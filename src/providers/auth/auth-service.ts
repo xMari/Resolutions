@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from './user';
 import * as firebase from 'firebase/app';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 @Injectable()
 export class AuthService {
@@ -11,8 +12,8 @@ export class AuthService {
 
     constructor(
         private angularFireAuth: AngularFireAuth,
-        private googlePlus: GooglePlus) {
-        this.user = angularFireAuth.authState;
+        private googlePlus: GooglePlus,
+        private facebook: Facebook) {
     }
 
     createUser(user: User) {
@@ -23,7 +24,7 @@ export class AuthService {
         return this.angularFireAuth.auth.signInWithEmailAndPassword(user.email, user.password);
     }
 
-    signWithGoogle() {
+    signInWithGoogle() {
         return this.googlePlus.login({
             'webClientId': '764041532194-g4eh8pt1ic7f652dbn54i6chki57v381.apps.googleusercontent.com',
             'offline': true
@@ -31,22 +32,38 @@ export class AuthService {
             .then(res => {
                 return this.angularFireAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
                     .then((user: firebase.User) => {
-
+                        //atualizando o profile do usuário
                         return user.updateProfile({ displayName: res.displayName, photoURL: res.imageUrl })
                     });
             });
     }
 
-    signOut(){
-        if (this.angularFireAuth.auth.currentUser.providerData.length){
-            for (var i = 0; i < this.angularFireAuth.auth.currentUser.providerData.length; i++){
+
+
+    signInWithFacebook() {
+        return this.facebook.login(['public_profile', 'email'])
+            .then((res: FacebookLoginResponse) => {
+
+                return this.angularFireAuth.auth.signInWithCredential(firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken));
+            })
+    }
+
+    signOut() {
+        if (this.angularFireAuth.auth.currentUser.providerData.length) {
+            for (var i = 0; i < this.angularFireAuth.auth.currentUser.providerData.length; i++) {
                 var provider = this.angularFireAuth.auth.currentUser.providerData[i];
 
-                if (provider.providerId == firebase.auth.GoogleAuthProvider.PROVIDER_ID){
+               
+                if (provider.providerId == firebase.auth.GoogleAuthProvider.PROVIDER_ID) {
                     return this.googlePlus.disconnect()
-                    .then(() => {
-                        return this.signOutFirebase();
-                    });
+                        .then(() => {
+                            return this.signOutFirebase();
+                        });
+                } else if (provider.providerId == firebase.auth.FacebookAuthProvider.PROVIDER_ID) { 
+                    return this.facebook.logout()
+                        .then(() => {
+                            return this.signOutFirebase();
+                        });
                 }
             }
         }

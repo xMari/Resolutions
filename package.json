@@ -21,6 +21,7 @@
     "@angular/platform-browser": "4.4.3",
     "@angular/platform-browser-dynamic": "4.4.3",
     "@ionic-native/core": "4.3.2",
+    "@ionic-native/facebook": "^4.3.2",
     "@ionic-native/google-plus": "^4.3.2",
     "@ionic-native/splash-screen": "4.3.2",
     "@ionic-native/status-bar": "4.3.2",
@@ -28,6 +29,7 @@
     "angularfire2": "^5.0.0-rc.3",
     "cordova-android": "6.3.0",
     "cordova-plugin-device": "^1.1.4",
+    "cordova-plugin-facebook4": "^1.9.1",
     "cordova-plugin-googleplus": "^5.1.1",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^4.0.3",
@@ -55,6 +57,10 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "764041532194-g4eh8pt1ic7f652dbn54i6chki57v381.apps.googleusercontent.com"
+      },
+      "cordova-plugin-facebook4": {
+        "APP_ID": "123851751616814",
+        "APP_NAME": "Resolutions"
       }
     },
     "platforms": [

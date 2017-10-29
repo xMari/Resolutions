@@ -86,4 +86,8 @@
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
         <variable name="REVERSED_CLIENT_ID" value="764041532194-g4eh8pt1ic7f652dbn54i6chki57v381.apps.googleusercontent.com" />
     </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="123851751616814" />
+        <variable name="APP_NAME" value="Resolutions" />
+    </plugin>
 </widget>

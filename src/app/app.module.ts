@@ -17,6 +17,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { AuthService } from '../providers/auth/auth-service';
 
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Facebook } from '@ionic-native/facebook';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA6UaRs-fuANSLU9CJw3gHXCjq2AeOtM4w",
@@ -54,7 +55,8 @@ const firebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    GooglePlus
+    GooglePlus,
+    Facebook
   ]
 })
 export class AppModule {}
