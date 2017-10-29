@@ -19,10 +19,10 @@ export class SigninPage {
   user: User = new User();
   @ViewChild('form') form: NgForm;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
-  private authService: AuthService,
-private toastCtrl: ToastController) {
+    private authService: AuthService,
+    private toastCtrl: ToastController) {
   }
 
   resetPassword() {
@@ -51,6 +51,17 @@ private toastCtrl: ToastController) {
           toast.present();
         });
     }
+  }
+
+  signInWithGoogle() {
+    this.authService.signWithGoogle()
+      .then(() => {
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch((error) => {
+        this.toastCtrl.create({ duration: 3000, position: 'bottom', message: 'Erro ao efetuar o login' })
+        .present();
+      });
   }
 }
 

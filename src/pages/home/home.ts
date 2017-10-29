@@ -2,24 +2,33 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth-service';
 import { SigninPage } from '../signin/signin';
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { AngularFireAuth } from 'angularfire2/auth';
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
+  displayName: string;
+  imgUrl: string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private afAuth: AngularFireAuth) {
+
+      const authObserver = afAuth.authState.subscribe(user => {
+        this.displayName = '';
+        this.imgUrl = '';
+
+        if (user) {
+          this.displayName = user.displayName;
+          this.imgUrl = user.photoURL;
+
+           authObserver.unsubscribe();           
+        }
+      })
   }
 
   signOut() {
@@ -27,7 +36,7 @@ export class HomePage {
       .then(() => {
         this.navCtrl.setRoot(SigninPage);
       })
-      .catch((error)=> {
+      .catch((error) => {
         console.error(error);
       });
   }
