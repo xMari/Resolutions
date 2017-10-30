@@ -1,13 +1,109 @@
-<ion-header>
-  <ion-navbar color="primary">
-    <ion-title>
-      Login
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content no-bounce>
+
+  <ion-slides pager id="slidesconfig">
+
+    <ion-slide>
+      <h2>Resoluções</h2>
+      <p>Seja Bem Vindo(a) ao App! </p>
+    </ion-slide>
+
+    <ion-slide>
+      <h2>É Gratuito!</h2>
+      <p class="fraselogin">Fique à vontade e encontre as resoluções dos livros acadêmicos que você precisa.</p>
+    </ion-slide>
+
+  </ion-slides>
+
+  <form #form="ngForm" novalidate>
+
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>E-mail</ion-label>
+        <ion-input type="text" name="email" [(ngModel)]="user.email" #email="ngModel" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="user.password" #password="ngModel" required></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-grid>
+
+      <ion-row>
+        <ion-col col-6 text-center>
+          <button class="entrar" ion-button round color="primary" [disabled]="!form.form.valid" (click)="signIn()">
+            Entrar
+          </button>
+        </ion-col>
+          <ion-col col-6 text-center>
+            <button ion-button round color="primary" (click)="signUp()">
+              Criar Conta
+            </button>
+          </ion-col>
+       
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6 text-center>
+          <button ion-button block icon-left color="danger" (click)="signInWithGoogle()">
+            <ion-icon name="logo-google"></ion-icon>
+            Google
+          </button>
+        </ion-col>
+        <ion-col col-6 text-center>
+          <button ion-button block icon-left color="facebook" (click)="signInWithFacebook()">
+            <ion-icon name="logo-facebook"></ion-icon>
+           Facebook
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+          <button ion-button block clear color="primary" (click)="resetPassword()">
+              
+                    Esqueci minha senha
+                  </button>
+      </ion-row>
+    </ion-grid>
 
 
-<ion-content padding>
+  </form>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+
+<ion-content no-bounce>
+
+
 
   <form #form="ngForm" novalidate>
     <ion-list>
@@ -34,25 +130,25 @@
       Entrar
     </button>
     <button ion-button block clear (click)="resetPassword()">
-     
+
       Esqueci minha senha
     </button>
     <button ion-button block color="primary" (click)="signUp()">
-     Criar Conta
+      Criar Conta
     </button>
     <button ion-button block icon-left color="danger" (click)="signInWithGoogle()">
-        <ion-icon name="logo-google"></ion-icon>
+      <ion-icon name="logo-google"></ion-icon>
       Entrar com o Google
     </button>
     <button ion-button block icon-left color="facebook" (click)="signInWithFacebook()">
-        <ion-icon name="logo-facebook"></ion-icon>
-        Entrar com o Facebook
-      </button>
+      <ion-icon name="logo-facebook"></ion-icon>
+      Entrar com o Facebook
+    </button>
 
-   
+
   </form>
 
-  
 
 
-</ion-content>
+
+</ion-content>  -->

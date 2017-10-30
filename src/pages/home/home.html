@@ -1,4 +1,64 @@
-<ion-header>
+<ion-content no-bounce>
+
+  <ion-slides pager id="slidesconfighome">
+
+    <ion-slide>
+      <h2>Resoluções</h2>
+      <p>Seja Bem Vindo(a)</p>
+    </ion-slide>
+
+    <ion-slide>
+      <h2>Versão Beta! </h2>
+      <p>Estamos em fase de desenvolvimento!
+        <br> Fique à vontade para solicitar resoluções de livros que não encontrou por aqui.</p>
+    </ion-slide>
+
+  </ion-slides>
+
+  <button ion-button outline small color="primary" >
+    Fale Conosco
+  </button>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 text-center>
+          <button class="sair" ion-button round  color="primary" (click)="  signOut()">
+              Sair
+            </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-header>
 
   <ion-navbar color="primary">
     <ion-title>Home</ion-title>
@@ -8,6 +68,7 @@
 
 
 <ion-content padding>
+
   <ion-card>
     <img src="{{ imgUrl }}" alt="{{ displayName }}" />
     <ion-card-content>
@@ -20,12 +81,8 @@
 
 
 
-
-
-
-
   <button ion-button block color="primary" (click)="  signOut()">
     Sair
   </button>
 
-</ion-content>
+</ion-content> -->

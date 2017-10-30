@@ -1,3 +1,29 @@
+
+@font-face{
+    font-family: 'Dancing Script';
+    
+    src: url('../assets/fonts/DK0eTGXiZjN6yA8zAEyM2Ud0sm1ffa_JvZxsF_BEwQk.woff2') format('woff2');
+    }
+   
+     
+    
 page-signin {
 
+    #slidesconfig{
+        height: 15em;
+        
+    }
+    #slidesconfig ion-slide{
+       
+    }
+    .entrar{
+        padding-right: 3.5em;
+        padding-left: 3.5em;
+    }
+    .fraselogin{
+        margin-right: 2em;
+        margin-left: 2em;
+    }
+
 }
+
